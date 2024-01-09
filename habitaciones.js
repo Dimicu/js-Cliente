@@ -99,15 +99,23 @@ for (let i = 1; i <= plantas; i++) {
 //Esta parte de añadir todos los valores en el select he tenido que buscarla con chat gpt
 //siempre me salia el ultimo solo.
 let select = document.getElementById("numHabitaciones");
+let cuartoSeleccionado;
+
+
 arrayHabitaciones.forEach(elemento => {
     let opcion = document.createElement("option");
     opcion.value = elemento.id;
-    opcion.className = "valorHabitacion";
+    opcion.className = "habitacion";
     opcion.text = elemento.id;
+    opcion.id = "habitacion" + elemento.id;
     select.add(opcion);
 });
 
-
+select.addEventListener("change", function () {
+    // Obtener el valor seleccionado al producirse el evento de cambio
+    cuartoSeleccionado = select.value;
+    console.log(cuartoSeleccionado);
+});
 
 function habWindow() {
 
@@ -119,8 +127,45 @@ function habWindow() {
             contenidoHab = elemento;
         }
     })
+    console.log(contenidoHab);
+    console.log(contenidoHab.id);
+    console.log(contenidoHab.tipo);
+    console.log(contenidoHab.caracteristicas);
+    console.log(contenidoHab.reserva);
 
-    window.habitacionWindow = window.open("formularioHabitacionRitz.html?id=${contenidoHab.id}", "ventanaHab", "width=500px, height=500px");
-    
+
+    let ventanaHija = window.open("formularioHabitacionRitz.html", "ventanaHab", "width=500px, height=500px");
+
+    if (ventanaHija) {
+        //Si quito la funcion onload no va
+        ventanaHija.onload = function () {
+
+            ventanaHija.document.getElementById("numHab").innerHTML = contenidoHab.id;
+            ventanaHija.document.getElementById("tipoHab").innerHTML = contenidoHab.tipo;
+            ventanaHija.document.getElementById("caractHab").innerHTML = contenidoHab.caracteristicas;
+        }
+
+    } else {
+        ventanaHija.console.error("No se puede cargar la web");
+    }
+    let fEntrada = ventanaHija.document.getElementById("fechaEntrada");
+    let valorEntrada;
+    let fSalida = ventanaHija.document.getElementById("fechaSalida");
+    let valorSalida;
+    let cliente = ventanaHija.document.getElementById("nombre");
+    let valorCliente;
+
+    fEntrada.addEventListener("click", function () {
+        valorEntrada = ventanaHija.document.getElementById("fechaEntrada").innerHTML;
+    })
+    fSalida.addEventListener("click", function () {
+        valorSalida = ventanaHija.document.getElementById("fechaSalida").innerHTML;
+    })
+    cliente.addEventListener("click", function () {
+        valorCliente = ventanaHija.document.getElementById("nombre").innerHTML;
+    })
+
+    console.log(fEntrada);
+    console.log(fSalida);
+    console.log(fcliente);
 }
-
