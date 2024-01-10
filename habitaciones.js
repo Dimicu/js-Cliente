@@ -37,7 +37,7 @@ class Habitacion {
 let plantas = 10;
 let propiedades = ["Aire Acondicionado", "Vistas Panoramicas", "Jacuzzi"];
 let atributos;
-let arrayHabitaciones = [];
+var arrayHabitaciones = [];
 
 for (let i = 1; i <= plantas; i++) {
     let p = i.toString();
@@ -148,24 +148,6 @@ function habWindow() {
     } else {
         ventanaHija.console.error("No se puede cargar la web");
     }
-    let fEntrada = ventanaHija.document.getElementById("fechaEntrada");
-    let valorEntrada;
-    let fSalida = ventanaHija.document.getElementById("fechaSalida");
-    let valorSalida;
-    let cliente = ventanaHija.document.getElementById("nombre");
-    let valorCliente;
 
-    fEntrada.addEventListener("click", function () {
-        valorEntrada = ventanaHija.document.getElementById("fechaEntrada").innerHTML;
-    })
-    fSalida.addEventListener("click", function () {
-        valorSalida = ventanaHija.document.getElementById("fechaSalida").innerHTML;
-    })
-    cliente.addEventListener("click", function () {
-        valorCliente = ventanaHija.document.getElementById("nombre").innerHTML;
-    })
-
-    console.log(fEntrada);
-    console.log(fSalida);
-    console.log(fcliente);
+    
 }

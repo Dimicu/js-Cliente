@@ -18,28 +18,28 @@
 
 <body>
     <h1>Habitación:</h1>
-    <p></p>
+    <p id="numHab"></p>
     <hr>
     <h4>Tipo Habitación: </h4>
     <br>
-    <p></p>
+    <p id="tipoHab"></p>
     <hr>
     <h4>Características Habitación:</h4>
     <br>
-    <p></p>
+    <p id="caractHab"></p>
     <hr>
     <p>
         Reserva Habitación: <br>
-        Fecha de Entrada: <input type="date" name="fechaEntrada" id="fechaEntrada" />
-        Fecha de Salida: <input type="date" name="fechaSalida" id="fechaSalida" />
+        Fecha de Entrada: <input type="date" name="fechaEntrada" id="fechaEntrada" required/>
+        Fecha de Salida: <input type="date" name="fechaSalida" id="fechaSalida"  required/>
         <br>
         Nombre: <input type="text" name="nombre" id="nombre" />
     </p>
     <hr>
-    <button onclick="">Actualizar</button>
+    <button onclick="actualizar()">Actualizar</button>
     <button onclick="">Borrar Reserva</button>
     <button onclick="">Cerrar Ventana</button>
 </body>
-
+<script src="reservaFechas.js"></script>
 
 </html>
