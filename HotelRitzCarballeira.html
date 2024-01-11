@@ -1,25 +1,32 @@
 <!-- ISAAC R.G. -->
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Página Datos Habitación Hotel Ritz Carballeira</title>
 	<meta name="author" content="Isaac">
 	<meta charset="utf-8">
-	
+	<style>
+		td {
+			padding: 10px;
+		}
+	</style>
 </head>
+
 <body>
 	<div id="contenedor">
 		<h1>Hotel Ritz Carballeira</h1>
 		<h3>Gestión de habitaciones</h3>
-			<p>Seleccione el número de habitación y pulse el botón "Mostrar Habitación"</p>
-			<select name="numHabitaciones" id="numHabitaciones">
+		<p>Seleccione el número de habitación y pulse el botón "Mostrar Habitación"</p>
+		<select name="numHabitaciones" id="numHabitaciones">
 
-			</select>
-			<input type="submit" name="mostrarHabitacion" value="Mostrar Habitacion" onclick="habWindow()">
-			<input type="submit" name="listarReservas" value="Listar Reservas" onclick="">
-			<p id="mensajes"></p>
-			<table id="reservasHechas"></table>
+		</select>
+		<input type="submit" name="mostrarHabitacion" value="Mostrar Habitacion" onclick="habWindow()">
+		<input type="submit" name="listarReservas" value="Listar Reservas" onclick="pintarReservas()">
+		<p id="mensajes"></p>
+		<table id="reservasHechas" border="1px solid"></table>
 	</div>
 </body>
 <script src="habitaciones.js"></script>
+
 </html>

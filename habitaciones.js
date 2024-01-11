@@ -149,5 +149,42 @@ function habWindow() {
         ventanaHija.console.error("No se puede cargar la web");
     }
 
-    
+
+
+}
+
+function listarReservas() {
+
+    let numero = parseInt(cuartoSeleccionado);
+    let planta = 0;
+    let hab = 0;
+    let idHab = 0;
+
+    if (numero < 1000) {
+        planta = parseInt(cuartoSeleccionado[0]) - 1;
+        hab = parseInt(cuartoSeleccionado.substring(1))
+        idHab = planta * 20 + hab;
+        console.log(idHab);
+    } else {
+        planta = parseInt(cuartoSeleccionado.substring(0, 2)) - 1;
+        hab = parseInt(cuartoSeleccionado.substring(2))
+        idHab = planta * 20 + hab;
+        console.log(idHab);
+    };
+
+    return idHab;
+}
+
+function pintarReservas() {
+    let numero = listarReservas();
+    for (i = 0; i <= arrayHabitaciones.length; i++) {
+        if (numero == i + 1) {
+            document.getElementById("reservasHechas").innerHTML =
+
+                "<tr><td>" + arrayHabitaciones[i]._id + "</td>" + "<td>" + arrayHabitaciones[i]._tipo +
+                "</td>" + "<td>" + arrayHabitaciones[i]._caracteristicas +
+                "</td>" + "<td>" + arrayHabitaciones[i]._reserva + "</td>" + "</tr > "
+
+        }
+    }
 }

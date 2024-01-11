@@ -1,44 +1,67 @@
-let fEntrada = document.getElementById("fechaEntrada");
-let fSalida = document.getElementById("fechaSalida");
-let cliente = document.getElementById("nombre");
+//tomamos el numero de habitacion desde el padre, porque daba problmeas desde el hijo
+let idDesdePadre = window.opener.document.getElementById("numHabitaciones").value;
 
-let valorEntrada;
-let valorSalida;
-let valorCliente;
+console.log(id);
+//buscamos con ese numHab la posicion que ocupa dentro del array
+function tomarPosicionArray() {
 
-/* No muestra nada por consola, y si pides las varaibles son cadenas vacias en la consola.
-let numeroCuarto = document.getElementById("numHab").innerHTML;
-let cuarto = numeroCuarto;
-console.log(cuarto)
-*/
+    let numero = parseInt(idDesdePadre);
+    let planta = 0;
+    let hab = 0;
+    let idHab = 0;
 
-//-------------------------------------------------------------------------------------------
+    if (numero < 1000) {
+        planta = parseInt(idDesdePadre[0]) - 1;
+        hab = parseInt(idDesdePadre.substring(1))
+        idHab = planta * 20 + hab;
+        console.log(idHab);
+    } else {
+        planta = parseInt(idDesdePadre.substring(0, 2)) - 1;
+        hab = parseInt(idDesdePadre.substring(2))
+        idHab = planta * 20 + hab;
+        console.log(idHab);
+    };
 
-/*No muestra por consola cuarto. Pero si pides en consola numeroCuarto si te muestra 
-todo el <p> y su contenido, y si le haces innerHTML te saca el valor. Pero en cambio cuarto, aunque este
-igualado a numeroCuarto.innerHTML no muestra nada por consola. 
-
-let numeroCuarto = document.getElementById("numHab");
-let cuarto = numeroCuarto.innerHTML;
-console.log(cuarto)*/
+    return idHab;
+}
 
 
-function actualizar() {
+//hacemos la toma de datos de fechas y nombre en objeto literal 
+function tomarReserva() {
 
-    valorEntrada = fEntrada.value;
-    valorSalida = fSalida.value;
-    valorCliente = cliente.value;
+    let fEntrada = document.getElementById("fechaEntrada");
+    let fSalida = document.getElementById("fechaSalida");
+    let cliente = document.getElementById("nombre");
+
+    let valorEntrada = fEntrada.value;
+    let valorSalida = fSalida.value;
+    let valorCliente = cliente.value;
 
     objetoLiteralReserva = { "Fecha_entrada": valorEntrada, "Fecha_salida": valorSalida, "Nombre_cliente": valorCliente };
 
-    console.log(objetoLiteralReserva);
-    console.log(objetoLiteralReserva.Fecha_entrada);
-    
+    return objetoLiteralReserva;
+}
 
-    console.log(window.opener.arrayHabitaciones);
-    console.log(valorEntrada);
-    console.log(valorSalida);
-    console.log(valorCliente);
+//buscamos dentro del array esa posicion y añadimos la reserva
+
+function agregarDatos() {
+
+    for (i = 0; i <= arrayHabitaciones.length; i++) {
+        if (posicion == i + 1) {
+            window.opener.arrayHabitaciones.push(objeto);
+
+        }
+    }
+}
 
 
+
+function actualizar() {
+    //guardamos posicion del numHab en el array
+    let posicion;
+    posicion = tomarPosicionArray();
+    //guardamos el objeto en variable;
+    let objeto;
+    objeto = tomarReserva();
+    agregarDatos();
 }
